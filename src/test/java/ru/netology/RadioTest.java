@@ -8,7 +8,7 @@ class RadioTest {
 
     @Test
     public void nextStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
         radio.setCurrentStation(9);
 
@@ -22,7 +22,7 @@ class RadioTest {
 
     @Test
     public void nextStationNegative() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
         radio.setCurrentStation(-2);
 
@@ -37,7 +37,7 @@ class RadioTest {
 
     @Test
     public void previousStationNull() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
         radio.setCurrentStation(0);
 
@@ -51,7 +51,7 @@ class RadioTest {
 
     @Test
     public void previousStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
         radio.setCurrentStation(8);
 
@@ -72,7 +72,7 @@ class RadioTest {
         radio.previousStation();
 
         int actual = radio.getCurrentStation();
-        int expected = 9;
+        int expected = 8;
 
         assertEquals(expected, actual);
     }
@@ -81,12 +81,12 @@ class RadioTest {
     public void increaseVolume() {
         Radio service = new Radio();
 
-        service.setCurrentVolume(11);
+        service.setCurrentVolume(105);
 
         service.increaseVolume();
 
         int actual = service.getCurrentVolume();
-        int expected = 10;
+        int expected = 100;
 
         assertEquals(expected, actual);
     }
@@ -124,12 +124,12 @@ class RadioTest {
     public void decreaseVolume() {
         Radio service = new Radio();
 
-        service.setCurrentVolume(11);
+        service.setCurrentVolume(105);
 
         service.decreaseVolume();
 
         int actual = service.getCurrentVolume();
-        int expected = 10;
+        int expected = 100;
 
         assertEquals(expected, actual);
     }

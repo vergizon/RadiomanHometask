@@ -2,6 +2,16 @@ package ru.netology;
 
 public class Radio {
     private int currentStation;
+    private int currentVolume;
+    private int stations;
+
+    public Radio(int stations) {
+        this.stations = stations;
+    }
+
+    public Radio() {
+        stations = 10;
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -9,16 +19,19 @@ public class Radio {
 
     public void setCurrentStation(int newCurrentStation) {
         if (newCurrentStation < 0) {
+            this.currentStation = 0;
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > stations - 1) {
+            this.currentStation = stations - 1;
             return;
         }
         this.currentStation = newCurrentStation;
     }
+
     public void nextStation() {
 
-        if (currentStation == 9) {
+        if (currentStation == stations - 1) {
             setCurrentStation(0);
             return;
         }
@@ -27,11 +40,11 @@ public class Radio {
         setCurrentStation(currentStation);
 
 
-        }
+    }
 
     public void previousStation() {
         if (currentStation == 0) {
-            setCurrentStation(9);
+            setCurrentStation(stations - 1);
             return;
 
         }
@@ -39,8 +52,6 @@ public class Radio {
         currentStation = currentStation - 1;
         setCurrentStation(currentStation);
     }
-
-    private int currentVolume;
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -57,11 +68,11 @@ public class Radio {
         }
 
 
-        if (currentVolume > 10) {
-            setCurrentVolume (10);
+        if (currentVolume > 100) {
+            setCurrentVolume(100);
         }
 
-        if (currentVolume < 10) {
+        if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
 
         }
@@ -73,14 +84,14 @@ public class Radio {
             setCurrentVolume(0);
 
         }
-        if (currentVolume > 10) {
-            setCurrentVolume(10);
+        if (currentVolume > 100) {
+            setCurrentVolume(100);
             return;
         }
 
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
-            setCurrentVolume(currentVolume);
         }
+        setCurrentVolume(currentVolume);
     }
 }
